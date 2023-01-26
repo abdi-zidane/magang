@@ -1,7 +1,9 @@
 <?php 
 include 'koneksi.php';
+
 $id = $_GET['id'];
-mysql_query("DELETE FROM user WHERE id='$id'")or die(mysql_error());
+
+mysqli_query($koneksi,"delete from user1 where id='$id'");
  
 header("location:index.php?pesan=hapus");
 ?>

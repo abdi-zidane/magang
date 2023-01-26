@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membuat CRUD Dengan PHP Dan MySQL - Menampilkan data dari database</title>
+	<title>Update data penduduk</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -21,30 +21,30 @@
 	<?php 
 	include "koneksi.php";
 	$id = $_GET['id'];
-	$query_mysql = mysql_query("SELECT * FROM user WHERE id='$id'")or die(mysql_error());
+	$data = mysqli_query($koneksi,"select * from user1 where id='$id'");
 	$nomor = 1;
-	while($data = mysql_fetch_array($query_mysql)){
+	while($d = mysqli_fetch_array($data)){
 	?>
-	<form action="update.php" method="post">		
-		<table>
+	<form method="post" action="update.php">		
+	<table>
 			<tr>
 				<td>Nama</td>
 				<td>
-					<input type="hidden" name="id" value="<?php echo $data['id'] ?>">
-					<input type="text" name="nama" value="<?php echo $data['nama'] ?>">
+					<input type="hidden" name="id" value="<?php echo $d['id']?>">
+					<input type="text" name="nama" value="<?php echo $d['nama']?>">
 				</td>					
 			</tr>	
 			<tr>
 				<td>Alamat</td>
-				<td><input type="text" name="alamat" value="<?php echo $data['alamat'] ?>"></td>					
+				<td><input type="text" name="alamat" value="<?php echo $d['alamat']?>"></td>					
 			</tr>	
 			<tr>
 				<td>Pekerjaan</td>
-				<td><input type="text" name="pekerjaan" value="<?php echo $data['pekerjaan'] ?>"></td>					
+				<td><input type="text" name="pekerjaan" value="<?php echo $d['pekerjaan']?>"></td>					
 			</tr>	
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Simpan"></td>					
+				<td><input type="submit" value="SIMPAN"></td>					
 			</tr>				
 		</table>
 	</form>
